@@ -36,6 +36,7 @@ public class UserCommandLineAppRunner implements CommandLineRunner {
             User user = customUserDetailsService.saveNewUser(userDTO);
 
             Role role = new Role("Admin");
+            roleService.saveRole(role);
             user.addRole(role);
             customUserDetailsService.saveUser(user);
         } catch (Exception e) {
