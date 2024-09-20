@@ -2,25 +2,25 @@ package com.tmjonker.burgerbonanza.commandlinerunners;
 
 import com.tmjonker.burgerbonanza.dtos.UserDTO;
 import com.tmjonker.burgerbonanza.entities.role.Role;
-import com.tmjonker.burgerbonanza.repositories.RoleRepository;
 import com.tmjonker.burgerbonanza.entities.user.User;
-import com.tmjonker.burgerbonanza.repositories.UserRepository;
 import com.tmjonker.burgerbonanza.services.CustomUserDetailsService;
 import com.tmjonker.burgerbonanza.services.RoleService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserCommandLineAppRunner implements CommandLineRunner {
+@Order(2)
+public class UserCommandLineRunner implements CommandLineRunner {
 
     private CustomUserDetailsService customUserDetailsService;
     private PasswordEncoder passwordEncoder;
     private RoleService roleService;
 
     @Lazy
-    public UserCommandLineAppRunner(CustomUserDetailsService customUserDetailsService, PasswordEncoder passwordEncoder, RoleService roleService) {
+    public UserCommandLineRunner(CustomUserDetailsService customUserDetailsService, PasswordEncoder passwordEncoder, RoleService roleService) {
 
         this.customUserDetailsService = customUserDetailsService;
         this.roleService = roleService;
@@ -34,10 +34,8 @@ public class UserCommandLineAppRunner implements CommandLineRunner {
 
         try {
             User user = customUserDetailsService.saveNewUser(userDTO);
-
-            Role role = new Role("Admin");
-            roleService.saveRole(role);
-            user.addRole(role);
+            Role adminRole = roleService.getRole("Admin");
+            user.addRole(adminRole);
             customUserDetailsService.saveUser(user);
         } catch (Exception e) {
             System.out.println(e.getMessage());

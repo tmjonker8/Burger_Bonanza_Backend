@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class MenuCommandLineAppRunner implements CommandLineRunner {
+public class MenuCommandLineRunner implements CommandLineRunner {
 
     MenuService menuService;
 
-    public MenuCommandLineAppRunner(MenuService menuService) {
+    public MenuCommandLineRunner(MenuService menuService) {
 
         this.menuService = menuService;
     }
