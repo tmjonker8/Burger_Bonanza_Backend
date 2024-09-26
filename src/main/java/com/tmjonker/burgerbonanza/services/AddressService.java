@@ -17,11 +17,12 @@ public class AddressService {
 
     public Address saveAddress(Address address) throws AddressNotFoundException {
 
-        if (!addressRepository.existsByAddress(address.getAddress()))
+        if (!addressRepository.existsByAddressAndAddress2AndZipCodeAndUserId(address.getAddress(),
+                address.getAddress2(), address.getZipCode(), address.getUserId()))
             return addressRepository.save(address);
         else {
-            return addressRepository.findAddressByAddressAndAddress2AndZipCode(address.getAddress(),
-                            address.getAddress2(), address.getZipCode())
+            return addressRepository.findAddressByAddressAndAddress2AndZipCodeAndUserId(address.getAddress(),
+                            address.getAddress2(), address.getZipCode(), address.getUserId())
                     .orElseThrow(() -> new AddressNotFoundException(address.getAddress()));
         }
     }

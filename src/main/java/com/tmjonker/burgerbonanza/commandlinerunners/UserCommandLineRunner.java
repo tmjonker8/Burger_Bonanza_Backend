@@ -8,6 +8,7 @@ import com.tmjonker.burgerbonanza.services.RoleService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +35,7 @@ public class UserCommandLineRunner implements CommandLineRunner {
 
         try {
             User user = customUserDetailsService.saveNewUser(userDTO);
-            Role adminRole = roleService.getRole("Admin");
+            Role adminRole = roleService.getRole("ADMIN");
             user.addRole(adminRole);
             customUserDetailsService.saveUser(user);
         } catch (Exception e) {

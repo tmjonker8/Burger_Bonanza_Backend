@@ -1,5 +1,6 @@
 package com.tmjonker.burgerbonanza.controllers;
 
+import com.tmjonker.burgerbonanza.dtos.UserTokenDTO;
 import com.tmjonker.burgerbonanza.entities.user.User;
 import com.tmjonker.burgerbonanza.jwt.JwtRequest;
 import com.tmjonker.burgerbonanza.jwt.JwtResponse;
@@ -40,12 +41,14 @@ public class AuthenticateController {
 
         try {
             authenticationService.authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-            final UserDetails userDetails = userDetailsService
+            final User userDetails = (User) userDetailsService
                     .loadUserByUsername(authenticationRequest.getUsername());
+
+            final UserTokenDTO userTokenDTO = new UserTokenDTO(userDetails.getId(), userDetails.getUsername(), userDetails.getRoles());
 
             final String token = jwtTokenUtil.generateToken(userDetails);
 
-            return ResponseEntity.ok(Map.of("token", new JwtResponse(token), "user", (User) userDetails));
+            return ResponseEntity.ok(Map.of("token", new JwtResponse(token), "user", userTokenDTO));
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

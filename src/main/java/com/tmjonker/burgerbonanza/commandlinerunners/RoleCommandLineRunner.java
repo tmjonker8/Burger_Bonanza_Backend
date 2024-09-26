@@ -17,7 +17,13 @@ public class RoleCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role role = new Role("Admin");
-        roleService.saveRole(role);
+        try {
+            Role role = new Role("ADMIN");
+            roleService.saveRole(role);
+            Role role1 = new Role("USER");
+            roleService.saveRole(role1);
+        } catch (Exception e) {
+            System.out.println("Roles already exist.");
+        }
     }
 }

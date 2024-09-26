@@ -10,14 +10,16 @@ public class PurchaseDTO {
     private List<MenuItem> menuItems;
     private double totalPrice;
     private String username;
+    private Long userId;
 
     private AddressDTO address;
 
-    public PurchaseDTO(List<MenuItem> menuItems, double totalPrice, String username, AddressDTO address) {
+    public PurchaseDTO(List<MenuItem> menuItems, double totalPrice, String username, AddressDTO address, Long userId) {
         this.menuItems = menuItems;
         this.totalPrice = totalPrice;
         this.username = username;
         this.address = address;
+        this.userId = userId;
     }
 
     public List<MenuItem> getMenuItems() {
@@ -50,5 +52,13 @@ public class PurchaseDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

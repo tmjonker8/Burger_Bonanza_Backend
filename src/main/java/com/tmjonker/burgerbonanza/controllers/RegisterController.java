@@ -1,6 +1,7 @@
 package com.tmjonker.burgerbonanza.controllers;
 
 import com.tmjonker.burgerbonanza.dtos.UserDTO;
+import com.tmjonker.burgerbonanza.dtos.UserTokenDTO;
 import com.tmjonker.burgerbonanza.entities.user.User;
 import com.tmjonker.burgerbonanza.exceptions.UsernameAlreadyExistsException;
 import com.tmjonker.burgerbonanza.services.CustomUserDetailsService;
@@ -31,7 +32,8 @@ public class RegisterController {
         try {
             User user = userDetailsService.saveNewUser(userDTO);
             scs.createShoppingCart(user);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            UserTokenDTO userTokenDTO = new UserTokenDTO(user.getId(), user.getUsername(), user.getRoles());
+            return new ResponseEntity<>(userTokenDTO, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

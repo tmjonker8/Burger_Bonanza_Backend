@@ -30,7 +30,7 @@ public class PurchaseService {
         Purchase purchase = new Purchase(purchaseDTO.getMenuItems(), purchaseDTO.getTotalPrice());
         Address address = new Address(purchaseDTO.getAddress().getName(),purchaseDTO.getAddress().getAddress1(),
                 purchaseDTO.getAddress().getAddress2(),purchaseDTO.getAddress().getCity(),
-                purchaseDTO.getAddress().getState(), purchaseDTO.getAddress().getZipCode());
+                purchaseDTO.getAddress().getState(), purchaseDTO.getAddress().getZipCode(), purchaseDTO.getUserId());
 
         try {
             address = addressService.saveAddress(address);

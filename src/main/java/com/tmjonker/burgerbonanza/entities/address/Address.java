@@ -22,13 +22,16 @@ public class Address {
 
     private String zipCode;
 
-    public Address(String name, String address, String address2, String city, String state, String zipCode) {
+    private Long userId;
+
+    public Address(String name, String address, String address2, String city, String state, String zipCode, Long userId) {
         this.name = name;
         this.address = address;
         this.address2 = address2;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.userId = userId;
     }
 
     public Address() {
@@ -89,5 +92,13 @@ public class Address {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

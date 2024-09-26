@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface AddressRepository extends CrudRepository<Address, Long> {
 
     boolean existsByAddress(String address);
-    Optional<Address> findAddressByAddressAndAddress2AndZipCode(String address, String address2, String zipCode);
+    boolean existsByAddressAndAddress2AndZipCodeAndUserId(String address, String address2, String zipCode, Long userId);
+    Optional<Address> findAddressByAddressAndAddress2AndZipCodeAndUserId(String address, String address2, String zipCode, Long userId);
 }
