@@ -2,11 +2,9 @@ package com.tmjonker.burgerbonanza.controllers;
 
 import com.tmjonker.burgerbonanza.dtos.PurchaseDTO;
 import com.tmjonker.burgerbonanza.services.PurchaseService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PurchaseController {
@@ -21,6 +19,16 @@ public class PurchaseController {
     @PostMapping("/purchase")
     public ResponseEntity<?> postPurchase(@RequestBody PurchaseDTO purchaseDTO) {
 
-        return purchaseService.processPurchase(purchaseDTO);
+        try {
+            purchaseService.processPurchase(purchaseDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
+
+//    @GetMapping("/purchase/{id}")
+//    public ResponseEntity<?> getPurchases(@PathVariable Long userId) {
+//
+//    }
 }

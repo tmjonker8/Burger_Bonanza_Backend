@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class PurchaseService {
 
@@ -25,26 +28,23 @@ public class PurchaseService {
         this.addressService = addressService;
     }
 
-    public ResponseEntity<?> processPurchase(PurchaseDTO purchaseDTO) {
+    public void processPurchase(PurchaseDTO purchaseDTO) throws Exception {
 
         Purchase purchase = new Purchase(purchaseDTO.getMenuItems(), purchaseDTO.getTotalPrice());
         Address address = new Address(purchaseDTO.getAddress().getName(),purchaseDTO.getAddress().getAddress1(),
                 purchaseDTO.getAddress().getAddress2(),purchaseDTO.getAddress().getCity(),
                 purchaseDTO.getAddress().getState(), purchaseDTO.getAddress().getZipCode(), purchaseDTO.getUserId());
 
-        try {
-            address = addressService.saveAddress(address);
-            purchase = purchaseRepository.save(purchase);
-            User user = (User) userDetailsService.loadUserByUsername(purchaseDTO.getUsername());
-            user.addPurchase(purchase);
-            user.addAddress(address);
+        address = addressService.saveAddress(address);
+        purchase = purchaseRepository.save(purchase);
+        User user = (User) userDetailsService.loadUserByUsername(purchaseDTO.getUsername());
+        user.addPurchase(purchase);
+        user.addAddress(address);
 
-            userDetailsService.saveUser(user);
-
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        userDetailsService.saveUser(user);
     }
+
+//    public Map<Integer, List<Purchase>> getUserPurchases(Long userId) {
+//
+//    }
 }
