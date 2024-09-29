@@ -71,7 +71,7 @@ public class MenuController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @DeleteMapping("/menu/{id}")
+    @DeleteMapping("/api/menu/{id}")
     public ResponseEntity<?> deleteMenuItem(@PathVariable Integer id) {
 
         if (menuService.existsById(id)) {
@@ -79,5 +79,17 @@ public class MenuController {
             return new ResponseEntity<>(HttpStatus.OK);
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/api/menu/{id}")
+    public ResponseEntity<?> updateMenuItem(@PathVariable Integer id, @RequestBody MenuItem mi) {
+
+        try {
+            menuService.updateMenuItem(id, mi);
+            return new ResponseEntity<>(HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -49,8 +49,22 @@ public class MenuService {
         menuItemRepository.deleteById(id);
     }
 
-    public boolean existsById(int id) {
+    public boolean existsById(Integer id) {
 
         return menuItemRepository.existsById(id);
+    }
+
+    public void updateMenuItem(Integer id, MenuItem menuItem) throws MenuItemNotFoundException {
+
+        MenuItem mi = menuItemRepository.findById(id)
+                .orElseThrow(() -> new MenuItemNotFoundException(id));
+
+        mi.setCategory(menuItem.getCategory());
+        mi.setDescription(menuItem.getDescription());
+        mi.setName(menuItem.getName());
+        mi.setImgPath(menuItem.getImgPath());
+        mi.setPrice(menuItem.getPrice());
+
+        menuItemRepository.save(mi);
     }
 }
