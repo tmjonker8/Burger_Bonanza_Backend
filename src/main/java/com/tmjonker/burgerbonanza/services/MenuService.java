@@ -7,19 +7,21 @@ import java.util.List;
 
 public interface MenuService {
 
-    public List<MenuItem> getAllMenuItems();
+    List<MenuItem> getAllMenuItems();
 
-    public MenuItem getMenuItemByName(String name) throws MenuItemNotFoundException;
+    MenuItem getMenuItemByName(String name) throws MenuItemNotFoundException;
 
-    public MenuItem getMenuItemById(Integer id) throws MenuItemNotFoundException;
+    MenuItem getMenuItemById(Integer id) throws MenuItemNotFoundException;
 
-    public List<MenuItem> getMenuItemsByCategory(String category)  throws MenuItemNotFoundException;
+    List<MenuItem> getMenuItemsByCategory(String category)  throws MenuItemNotFoundException;
 
-    public MenuItem addMenuItem(MenuItem menuItem);
+    MenuItem addMenuItem(MenuItem menuItem);
 
-    public void deleteMenuItem(Integer id);
+    void deleteMenuItem(Integer id);
 
-    public boolean existsById(Integer id);
+    boolean existsById(Integer id);
 
-    public void updateMenuItem(Integer id, MenuItem menuItem) throws MenuItemNotFoundException;
+    boolean existsByName(String name);
+
+    void updateMenuItem(Integer id, MenuItem menuItem) throws MenuItemNotFoundException;
 }

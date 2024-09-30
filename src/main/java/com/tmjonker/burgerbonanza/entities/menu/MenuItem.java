@@ -1,15 +1,13 @@
 package com.tmjonker.burgerbonanza.entities.menu;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class MenuItem {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
@@ -27,17 +25,28 @@ public class MenuItem {
     @Column(nullable = false)
     private String imgPath;
 
+    @Column(nullable = false)
+    private boolean isActive;
+
     public MenuItem() {
     }
 
-    public MenuItem(Integer id, String category, String name, String description, double price, String imgPath) {
+    public MenuItem(String category, String name, String description, double price, String imgPath) {
 
-        this.id = id;
         this.category = category;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imgPath = imgPath;
+        this.setActive(true);
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public Integer getId() {

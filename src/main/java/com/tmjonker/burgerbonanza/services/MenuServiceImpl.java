@@ -53,6 +53,11 @@ public class MenuServiceImpl implements MenuService {
         return menuItemRepository.existsById(id);
     }
 
+    public boolean existsByName(String name) {
+
+        return menuItemRepository.existsByName(name);
+    }
+
     public void updateMenuItem(Integer id, MenuItem menuItem) throws MenuItemNotFoundException {
 
         MenuItem mi = menuItemRepository.findById(id)

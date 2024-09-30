@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface MenuItemRepository extends CrudRepository<MenuItem, Integer> {
 
     Optional<MenuItem> findByName(String name);
+    boolean existsByName(String name);
     Optional<List<MenuItem>> findAllByCategory(String category);
 }
