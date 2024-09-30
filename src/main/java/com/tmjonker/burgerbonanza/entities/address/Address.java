@@ -1,8 +1,6 @@
 package com.tmjonker.burgerbonanza.entities.address;
 
-import com.tmjonker.burgerbonanza.entities.user.User;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Address {

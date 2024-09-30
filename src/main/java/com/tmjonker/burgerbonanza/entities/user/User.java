@@ -5,11 +5,11 @@ import com.tmjonker.burgerbonanza.entities.address.Address;
 import com.tmjonker.burgerbonanza.entities.purchase.Purchase;
 import com.tmjonker.burgerbonanza.entities.role.Role;
 import com.tmjonker.burgerbonanza.entities.shoppingcart.ShoppingCart;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
 import java.util.*;
 
 @Entity

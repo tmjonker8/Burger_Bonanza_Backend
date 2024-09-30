@@ -2,8 +2,8 @@ package com.tmjonker.burgerbonanza.entities.shoppingcart;
 
 import com.tmjonker.burgerbonanza.entities.menu.MenuItem;
 import com.tmjonker.burgerbonanza.entities.user.User;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Entity

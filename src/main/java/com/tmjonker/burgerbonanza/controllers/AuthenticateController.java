@@ -2,19 +2,13 @@ package com.tmjonker.burgerbonanza.controllers;
 
 import com.tmjonker.burgerbonanza.dtos.UserTokenDTO;
 import com.tmjonker.burgerbonanza.entities.user.User;
-import com.tmjonker.burgerbonanza.jwt.JwtRequest;
-import com.tmjonker.burgerbonanza.jwt.JwtResponse;
-import com.tmjonker.burgerbonanza.jwt.JwtTokenUtil;
+import com.tmjonker.burgerbonanza.security.jwt.JwtRequest;
+import com.tmjonker.burgerbonanza.security.jwt.JwtResponse;
+import com.tmjonker.burgerbonanza.security.jwt.JwtTokenUtil;
 import com.tmjonker.burgerbonanza.services.AuthenticationService;
 import com.tmjonker.burgerbonanza.services.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;

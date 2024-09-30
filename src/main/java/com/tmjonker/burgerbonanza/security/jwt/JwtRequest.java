@@ -1,4 +1,4 @@
-package com.tmjonker.burgerbonanza.jwt;
+package com.tmjonker.burgerbonanza.security.jwt;
 
 import java.io.Serializable;
 
