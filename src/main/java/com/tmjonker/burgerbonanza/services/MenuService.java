@@ -1,5 +1,6 @@
 package com.tmjonker.burgerbonanza.services;
 
+import com.tmjonker.burgerbonanza.dtos.MenuItemDTO;
 import com.tmjonker.burgerbonanza.entities.menu.MenuItem;
 import com.tmjonker.burgerbonanza.exceptions.MenuItemNotFoundException;
 
@@ -15,7 +16,7 @@ public interface MenuService {
 
     List<MenuItem> getMenuItemsByCategory(String category)  throws MenuItemNotFoundException;
 
-    MenuItem addMenuItem(MenuItem menuItem);
+    MenuItem addMenuItem(MenuItemDTO menuItem);
 
     void deleteMenuItem(Integer id);
 

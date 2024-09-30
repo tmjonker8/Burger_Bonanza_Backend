@@ -1,5 +1,6 @@
 package com.tmjonker.burgerbonanza.controllers;
 
+import com.tmjonker.burgerbonanza.dtos.MenuItemDTO;
 import com.tmjonker.burgerbonanza.entities.menu.MenuItem;
 import com.tmjonker.burgerbonanza.services.MenuService;
 import org.springframework.http.HttpStatus;
@@ -61,7 +62,7 @@ public class MenuController {
     }
 
     @PostMapping(value = "/api/menu/{id}")
-    public ResponseEntity<?> addMenuItem(@RequestBody MenuItem mi) {
+    public ResponseEntity<?> addMenuItem(@RequestBody MenuItemDTO mi) {
 
         MenuItem menuItem = menuService.addMenuItem(mi);
 

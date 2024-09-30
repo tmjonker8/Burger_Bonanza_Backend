@@ -1,5 +1,6 @@
 package com.tmjonker.burgerbonanza.services;
 
+import com.tmjonker.burgerbonanza.dtos.MenuItemDTO;
 import com.tmjonker.burgerbonanza.entities.menu.MenuItem;
 import com.tmjonker.burgerbonanza.exceptions.MenuItemNotFoundException;
 import com.tmjonker.burgerbonanza.repositories.MenuItemRepository;
@@ -38,9 +39,12 @@ public class MenuServiceImpl implements MenuService {
         return menuItemRepository.findAllByCategory(category).orElseThrow(() -> new MenuItemNotFoundException(category));
     }
 
-    public MenuItem addMenuItem(MenuItem menuItem) {
+    public MenuItem addMenuItem(MenuItemDTO menuItem) {
 
-        return menuItemRepository.save(menuItem);
+        MenuItem mi = new MenuItem(menuItem.getCategory(), menuItem.getName(),
+                menuItem.getDescription(), menuItem.getPrice(), menuItem.getImgPath());
+
+        return menuItemRepository.save(mi);
     }
 
     public void deleteMenuItem(Integer id) {
