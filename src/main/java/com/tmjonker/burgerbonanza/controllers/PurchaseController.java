@@ -28,10 +28,10 @@ public class PurchaseController {
     }
 
     @GetMapping("/purchase/{id}")
-    public ResponseEntity<?> getPurchases(@PathVariable Long userId) {
+    public ResponseEntity<?> getPurchases(@PathVariable Long id) {
 
         try {
-            return new ResponseEntity<>(purchaseService.getUserPurchases(userId), HttpStatus.OK);
+            return new ResponseEntity<>(purchaseService.getUserPurchases(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
