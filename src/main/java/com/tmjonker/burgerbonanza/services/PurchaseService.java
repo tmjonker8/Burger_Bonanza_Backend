@@ -17,5 +17,5 @@ public interface PurchaseService {
 
     void processPurchase(PurchaseDTO purchaseDTO) throws Exception;
 
-//    public Map<Integer, List<Purchase>> getUserPurchases(Long userId);
+    public List<Purchase> getUserPurchases(Long userId);
 }

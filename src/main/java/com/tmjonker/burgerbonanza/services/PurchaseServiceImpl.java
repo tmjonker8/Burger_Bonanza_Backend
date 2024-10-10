@@ -7,6 +7,9 @@ import com.tmjonker.burgerbonanza.entities.user.User;
 import com.tmjonker.burgerbonanza.repositories.PurchaseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
     PurchaseRepository purchaseRepository;
@@ -37,7 +40,9 @@ public class PurchaseServiceImpl implements PurchaseService {
         userDetailsService.saveUser(user);
     }
 
-//    public Map<Integer, List<Purchase>> getUserPurchases(Long userId) {
-//
-//    }
+    public List<Purchase> getUserPurchases(Long userId) {
+        User user = userDetailsService.getUserById(userId);
+
+        return user.getPurchases();
+    }
 }

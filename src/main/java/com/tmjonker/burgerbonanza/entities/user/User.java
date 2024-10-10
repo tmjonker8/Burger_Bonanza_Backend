@@ -35,24 +35,13 @@ public class User implements UserDetails {
 private Set<Role> roles = new HashSet<>();
 
     @OneToMany
-    @JoinTable(
-            name = "user_purchases",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "purchase_id")
-    )
     private List<Purchase> purchases;
 
     @OneToMany
-    @JoinTable(
-            name = "user_addresses",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "address_id")
-    )
     private Set<Address> addresses;
 
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "shopping_cart_id", referencedColumnName = "id")
     private ShoppingCart shoppingCart;
 
     public User() {}

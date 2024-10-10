@@ -27,8 +27,13 @@ public class PurchaseController {
         }
     }
 
-//    @GetMapping("/purchase/{id}")
-//    public ResponseEntity<?> getPurchases(@PathVariable Long userId) {
-//
-//    }
+    @GetMapping("/purchase/{id}")
+    public ResponseEntity<?> getPurchases(@PathVariable Long userId) {
+
+        try {
+            return new ResponseEntity<>(purchaseService.getUserPurchases(userId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

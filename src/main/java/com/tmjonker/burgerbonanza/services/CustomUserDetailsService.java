@@ -3,8 +3,10 @@ package com.tmjonker.burgerbonanza.services;
 import com.tmjonker.burgerbonanza.dtos.UserDTO;
 import com.tmjonker.burgerbonanza.entities.address.Address;
 import com.tmjonker.burgerbonanza.entities.user.User;
+import com.tmjonker.burgerbonanza.exceptions.UserNotFoundException;
 import com.tmjonker.burgerbonanza.exceptions.UsernameAlreadyExistsException;
 import com.tmjonker.burgerbonanza.repositories.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -51,5 +53,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         User user = (User) loadUserByUsername(username);
         return user.getAddresses();
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 }
