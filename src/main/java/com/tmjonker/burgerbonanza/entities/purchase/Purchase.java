@@ -1,8 +1,11 @@
 package com.tmjonker.burgerbonanza.entities.purchase;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tmjonker.burgerbonanza.entities.menu.MenuItem;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,6 +24,24 @@ public class Purchase {
     private List<MenuItem> menuItems;
 
     private double totalPrice;
+
+    public Purchase(List<MenuItem> menuItems, double totalPrice, Date date) {
+        this.menuItems = menuItems;
+        this.totalPrice = totalPrice;
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @CreationTimestamp
+    @JsonFormat(pattern = "MM-dd-yyyy")
+    private Date date;
 
     public Purchase(List<MenuItem> menuItems, double totalPrice) {
         this.menuItems = menuItems;
