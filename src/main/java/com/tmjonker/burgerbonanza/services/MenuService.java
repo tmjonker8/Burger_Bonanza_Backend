@@ -25,4 +25,6 @@ public interface MenuService {
     boolean existsByName(String name);
 
     void updateMenuItem(Integer id, MenuItem menuItem) throws MenuItemNotFoundException;
+
+    void deactivateMenuItem(Integer id) throws MenuItemNotFoundException;
 }

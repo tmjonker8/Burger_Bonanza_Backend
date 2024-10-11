@@ -75,4 +75,15 @@ public class MenuServiceImpl implements MenuService {
 
         menuItemRepository.save(mi);
     }
+
+    @Override
+    public void deactivateMenuItem(Integer id) throws MenuItemNotFoundException {
+
+        MenuItem mi = menuItemRepository.findById(id)
+                .orElseThrow(() -> new MenuItemNotFoundException(id));
+
+        mi.setActive(false);
+
+        menuItemRepository.save(mi);
+    }
 }
