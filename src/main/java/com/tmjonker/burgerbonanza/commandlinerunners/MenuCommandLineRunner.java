@@ -40,8 +40,14 @@ public class MenuCommandLineRunner implements CommandLineRunner {
                 "tomato, onions, and croutons.  Served with your choice of dressing.", 13.99, "https://www.thespruceeats.com/thmb/agWvZXfd9cQhJSP1kL1N8douR8M=/2000x1386/filters:fill(auto,1)/california-grilled-chicken-salad-recipe-334159-13-8ecd934fee5e42f8b5d38239b083460b.jpg");
         MenuItemDTO menuItem8 = new MenuItemDTO("Salad", "Southwest Salad", "Salad with spicy chicken," +
                 " frito chips, bacon.  Served with your choice of dressing.", 13.99, "https://theoregondietitian.com/wp-content/uploads/2022/04/SpicySouthwestSalad-1200-x-1200.jpg");
+        MenuItemDTO menuItem12 = new MenuItemDTO("Burger", "Exotic Cheeseburger", "A wild ass cheeseburger.  Served with a side of fries and a pickle."
+                , 14.99, "https://www.burgervillage.com/wp-content/uploads/2022/06/organic-exotic.jpg");
         MenuItemDTO menuItem9 = new MenuItemDTO("Burger", "Cheeseburger", "A basic cheeseburger.  Served with a side of fries and a pickle."
                 , 12.99, "https://www.simplyrecipes.com/thmb/v9oJerpFOWNuMwJmL9HrXFvgy4g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Smash-Burger-LEAD-06-ef2afe47d4014f76b1ed50e906c4b17d.jpg");
+        MenuItemDTO menuItem10 = new MenuItemDTO("Dessert", "Cheesecake", "A slice of NY style cheesecake."
+                , 7.99, "https://www.onceuponachef.com/images/2017/12/cheesecake.jpg");
+        MenuItemDTO menuItem11 = new MenuItemDTO("Dessert", "Strawberry Shortcake", "A slice of strawberry shortcake."
+                , 8.99, "https://freedsbakery.com/cdn/shop/products/ShortcakeSlice_1024x1024_14c38a3c-84e1-4453-b8ff-fda2864caf32.jpg?v=1718555645");
 
 
         menuList.add(menuItem1);
@@ -53,6 +59,9 @@ public class MenuCommandLineRunner implements CommandLineRunner {
         menuList.add(menuItem7);
         menuList.add(menuItem8);
         menuList.add(menuItem9);
+        menuList.add(menuItem10);
+        menuList.add(menuItem11);
+        menuList.add(menuItem12);
 
         menuList.forEach(item -> {
             if (!menuService.existsByName(item.getName()))
