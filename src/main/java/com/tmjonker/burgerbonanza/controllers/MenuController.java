@@ -103,4 +103,14 @@ public class MenuController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/api/menu/activate/{id}")
+    public ResponseEntity<?> activateMenuItem(@PathVariable Integer id) {
+        try {
+            menuService.activateMenuItem(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

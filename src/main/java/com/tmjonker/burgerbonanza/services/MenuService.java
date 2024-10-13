@@ -27,4 +27,6 @@ public interface MenuService {
     void updateMenuItem(Integer id, MenuItem menuItem) throws MenuItemNotFoundException;
 
     void deactivateMenuItem(Integer id) throws MenuItemNotFoundException;
+
+    void activateMenuItem(Integer id) throws MenuItemNotFoundException;
 }
